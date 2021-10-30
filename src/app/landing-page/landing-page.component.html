@@ -1,0 +1,47 @@
+<div class="p-grid bg-white">
+    <div class="p-col-2 cursor-pointer text-center" *ngIf="role.gap">
+        <p-card (click)="goto('home')">
+            <img src="./assets/icons/Gap Screen image.jpg">
+        </p-card>
+        <h2 class="m-0 mt-2" (click)="goto('home')">GAP Screen</h2>
+    </div>
+    <div class="p-col-2 cursor-pointer text-center" *ngIf="role.bo">
+        <p-card (click)="gotoSap()">
+            <img src="./assets/icons/SAP BO image.png">
+
+        </p-card>
+        <h2 class="m-0 mt-2" (click)="gotoSap()">SAP BO</h2>
+    </div>
+    <div class="p-col-2 cursor-pointer text-center" *ngIf="role.admin">
+        <p-card [routerLink]="['/users/all']">
+            <img src="./assets/icons/User image.png">
+
+        </p-card>
+        <h2 class="m-0 mt-2" [routerLink]="['/users/all']">User Management</h2>
+    </div>
+    <div class="p-col-2 cursor-pointer text-center" *ngIf="role.rbs" (click)="gotoRbs()">
+        <p-card>
+            <img src="./assets/icons/Picture1.jpg" height="50">
+        </p-card>
+        <h2 class="m-0 mt-2">RBS</h2>
+    </div>
+</div>
+
+<p-dialog [(visible)]="display" modal="true" class="sapPwd">
+    <p-header>
+        Please Enter SAP BO Password
+    </p-header>
+    <div class="p-field p-col mb-0">
+        <span class="p-float-label mt-2">
+            <input type="password" id="sapPwd" style="width: 100%;" pInputText name="sapPwd" [(ngModel)]="sapPwd"> 
+            <label for="sapPwd">SAP BO Password</label>
+        </span>
+        <label class="text-danger" style="width:350px;" *ngIf="error">
+            Your Username/Password may be wrong. <br>Please create SPSD incident with assignee group MISD_WIPRO_SAPBO. (SPSD Ticketing Tool: http://10.192.18.86:8080/CAisd/pdmweb.exe).
+        </label>
+    </div>
+    <p-footer>
+        <p-button label="Cancel" styleClass="p-button p-button-black btn-block" (click)="closeModal()"></p-button>
+        <p-button label="Save" styleClass="p-button p-button-pnb btn-block" (click)="sapPwd && updateSapPwd()" [disabled]="sapPwd==''"></p-button>
+    </p-footer>
+</p-dialog>

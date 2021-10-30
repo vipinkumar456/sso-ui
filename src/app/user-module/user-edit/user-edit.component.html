@@ -1,0 +1,67 @@
+<p-toast position="top-right"></p-toast>
+
+<form class="pt-2" name="userForm" [formGroup]="userForm" (ngSubmit)="saveUser()" class="userForm">
+    <div class="p-fluid p-grid">
+        <div class="p-field p-col-12 p-md-6">
+            <span class="p-float-label">
+                <input id="firstname" name="firstname" [disabled]="disabled" formControlName="firstName" type="text" required pInputText>
+                <label for="firstname">First Name</label>
+            </span>
+        </div>
+        <div class="p-field p-col-12 p-md-6">
+            <span class="p-float-label">
+                <input id="lastName" name="lastName" [disabled]="disabled" formControlName="lastName" type="text" required  pInputText>
+                <label for="lastName">Last Name</label>
+            </span>
+        </div>
+        <div class="p-field p-col-12 p-md-6">
+            <span class="p-float-label">
+                <input id="branch" name="branch" formControlName="branch" type="text"   pInputText>
+                <label for="branch">Branch/Circle/Zone Name</label>
+            </span>
+        </div>
+        <div class="p-field p-col-12 p-md-6">
+            <span class="p-float-label">
+                <input id="cadre" name="cadre" formControlName="cadre" type="text"   pInputText>
+                <label for="cadre">Cadre</label>
+            </span>
+        </div>
+        <div class="p-field p-col-12 p-md-6">
+            <span class="p-float-label">
+                <input id="phoneNumber" name="phoneNumber" formControlName="phoneNumber" type="number" pInputText>
+                <label for="phoneNumber">Phone Number</label>
+            </span>
+        </div>
+        <div class="p-field p-col-12 p-md-6">
+            <span class="p-float-label">
+                <input id="email" name="email" formControlName="email" type="email" required  pInputText>
+                <label for="email">Email</label>
+            </span>
+        </div>
+
+        <div class="p-field p-col-12 p-md-6">
+            <span class="p-float-label">
+                <input id="userName" name="userName" pInputText  [disabled]="disabled" autocomplete="off"  formControlName="userName" type="text" required >
+                <label for="userName">User Name</label>
+            </span>
+        </div>
+        <!-- <div class="p-field p-col-12 p-md-6">
+            <span class="p-float-label">
+                <input id="password" name="password" formControlName="password" type="password" autocomplete="off"  pInputText>
+                <label for="password">Password</label>
+            </span>
+            <small class="text-danger" *ngIf="userForm.invalid && userForm.controls.password.errors?.pattern">Password must be 7 - 19 char and must contain one lowecase, one uppercase, on number and one special character</small>
+        </div> -->
+        <div class="p-field p-col-12 p-md-6">
+            <span class="p-float-label">
+                <p-multiSelect [options]="roles"  formControlName="roles" optionLabel="name"></p-multiSelect>
+                <label for="roles">Roles</label>
+            </span>
+        </div>
+
+    </div>
+    <div class="p-col-12 text-right">
+        <button pButton type="button" label="Cancel" class="p-button-secondary mr-2" [routerLink]="currentRoute=='profile'?['/home']:['/users']"></button>
+        <button pButton type="submit" label="Save" class=" p-button-pnb ml-2" icon="pi pi-check" iconPos="left"></button>
+    </div>
+</form>

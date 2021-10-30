@@ -1,0 +1,60 @@
+<form>
+    <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col">
+            <span class="p-float-label">
+                <p-dropdown inputId="division" [options]="divisions" optionLabel="name"></p-dropdown>
+                <label for="division">Division</label>
+            </span>
+        </div>
+        <div class="p-field p-col">
+            <span class="p-float-label">
+                <p-dropdown inputId="reportNO" [options]="reportNos" optionLabel="name"></p-dropdown>
+                <label for="reportNO">Report NO</label>
+            </span>
+        </div>
+
+        <div class="p-field p-col">
+            <span class="p-float-label">
+                <p-dropdown inputId="reportName" [options]="reportNames" optionLabel="name"></p-dropdown>
+                <label for="reportName">Report Name</label>
+            </span>
+        </div>
+        <div class="p-field p-col">
+            <span class="p-float-label">
+                <p-dropdown inputId="logic" [options]="logics" optionLabel="label"></p-dropdown>
+                <label for="logic">Logic Validated</label>
+            </span>
+        </div>
+    </div>
+    <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col">
+            <span class="p-float-label">
+                <p-calendar inputId="lastReviewDate" [(ngModel)]="minDateValue" name="lastReviewDate" [disabled]="true"></p-calendar>
+                <label for="lastReviewDate">Last Review Date</label>
+            </span>
+        </div>
+        <div class="p-field p-col">
+            <span class="p-float-label">
+                <p-calendar inputId="logicReviewDate"  [minDate]="minDateValue"></p-calendar>
+                <label for="logicReviewDate">Logic Review Date</label>
+            </span>
+        </div>
+
+        <div class="p-field p-col">
+            <span class="p-float-label">
+                <input type="text" id="userIDWhoReviewed" pInputText name="userIDWhoReviewed"> 
+                <label for="userIDWhoReviewed">User ID Who Reviewed</label>
+            </span>
+        </div>
+        <div class="p-field p-col">
+            <span class="p-float-label">
+                <p-calendar inputId="systemDate" [(ngModel)]="minDateValue" name="systemDate" [disabled]="true"></p-calendar>
+                <label for="systemDate">System Date</label>
+            </span>
+        </div>
+
+    </div>
+    <div class="p-col-12 text-right">
+        <p-button label="Save" styleClass="p-button p-button-pnb btn-block"></p-button>
+    </div>
+</form>

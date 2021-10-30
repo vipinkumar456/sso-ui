@@ -1,0 +1,9 @@
+<div class="table">
+    <div class="userHeader">
+        <i class="pi pi-fw pi-user mr-2"></i>{{user()}}
+    </div>
+    <button pButton label="logout" class="userHeader f-right " (click)="logout()" icon="pi pi-power-off"></button>
+</div>
+<div class="content-section">
+    <router-outlet></router-outlet>
+</div>

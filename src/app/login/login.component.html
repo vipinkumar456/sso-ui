@@ -1,0 +1,131 @@
+<div class="p-grid loginContainer ">
+    <div class="p-col-2"></div>
+    
+    <div class="p-col-8 loginBlock">
+        <div class="text-center color-purple" style="margin-bottom:35px;">
+            <p *ngIf="smead">{{smead.description}} {{smead.date}}</p>
+            <p *ngIf="edw">{{edw.description}} {{edw.date}}</p>
+        </div>
+        <div class="p-grid bg-white">
+            <div class="p-col loginIcon d-md-down-none">
+                <!-- <img src="../../assets/icons/Picture1.jpg" style="max-width: 100%;"> -->
+            </div>
+            <div class="p-col">
+                <form #f="ngForm" *ngIf="forgot==false" (ngSubmit)="signIn(f.form)">
+                    <div class="p-fluid loginBox pt-0">
+                        <br>
+                        <h1 class="m-0">Login</h1>
+                        <br><br>
+                        <div *ngIf="error" class="p-field text-center text-danger">
+                            {{error}}
+                        </div>
+                        <div class="p-field">
+                            <div class="p-inputgroup">
+                                <span class="p-inputgroup-addon">
+                                    <i class="pi pi-user"></i>
+                                </span>
+                                <span class="p-float-label">
+                                    <input id="username" name="username" type="text" required [(ngModel)]="user.username" pInputText>
+                                    <label for="username">Username</label>
+                                </span>
+                            </div>
+
+
+                        </div>
+                        <div class="p-field">
+                            <div class="p-inputgroup">
+                                <span class="p-inputgroup-addon">
+                                    <i class="pi pi-lock"></i>
+                                </span>
+                                <span class="p-float-label">
+                                    <input id="password" name="password" type="password" required [(ngModel)]="user.password" pInputText>
+                                    <label for="password">Password</label>
+                                </span>
+                            </div>
+
+                        </div>
+                        <div class="p-field">
+                            <div class="p-inputgroup captcha">
+                                <span class="captchaVal">{{captchaData?.captcha}} </span>
+                                <input class="captchaInp" id="captchaResponse" name="captchaResponse" type="text" required [(ngModel)]="user.captchaResponse" [style]="{'width':'25%'}"  pInputText>
+                                <i (click)="getCaptcha()" class="pi pi-refresh refresh"></i>
+                            </div>
+                        </div>
+                        <!-- <div class="p-fluid p-formgrid p-grid">
+                            <div class="p-field-checkbox p-col text-small">
+                                <p-checkbox name="remember" inputId="remember" binary="true" [(ngModel)]="user.remember"></p-checkbox>
+                                <label for="remember"> Remember Me</label>
+                            </div>
+                        </div> -->
+                        <div class="p-field text-right">
+                            <p-button label="Login" type="submit" styleClass="p-button p-button-pnb btn-block"></p-button>
+                        </div>
+                        <div class="p-field">
+                            <a (click)="forgot=true;" class="cursor-pointer text-primary">Forgot Password?</a>
+                        </div>
+                        
+
+                    </div>
+                </form>
+                <form #f="ngForm" *ngIf="forgot">
+                    <div class="p-fluid loginBox pt-0">
+                        <br><br>
+                        <h1 class="m-0">Forgot Your Password?</h1>
+                        <br><br>
+                        <div class="p-field">
+                            <div class="p-inputgroup">
+                                <span class="p-inputgroup-addon">
+                                    <i class="pi pi-user"></i>
+                                </span>
+                                <span class="p-float-label">
+                                    <input id="username" name="username" type="text" required [(ngModel)]="user.username" pInputText>
+                                    <label for="username">Username</label>
+                                </span>
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="p-field">
+                            <!-- <a class="text-danger cursor-pointer disabled" (click)="sendEmail(f.form)">Send Link To Email</a> -->
+                            <!-- <hr class="hr-text" data-content="OR"> -->
+                            <p-button label="Send OTP To Mobile" (click)="sendOtp(f.form)" *ngIf="!showOtp" type="button" styleClass="p-button p-button-pnb btn-block"></p-button>
+                            <p-button label="Re-Send OTP To Mobile" (click)="sendOtp(f.form)" *ngIf="showOtp" type="button" styleClass="p-button p-button-pnb btn-block"></p-button>
+
+                            <!-- <a class="text-danger cursor-pointer" (click)="sendOtp(f.form)" *ngIf="!showOtp">Send OTP To Mobile</a>
+                            <a class="text-danger cursor-pointer" (click)="sendOtp(f.form)" *ngIf="showOtp">Re-Send OTP To Mobile</a> -->
+                            <!-- <p-button label="Request Reset Link To Email" type="submit" styleClass="p-button p-button-warning float-left"></p-button> -->
+                            <!-- <p-button label="Send OTP" type="submit" styleClass="p-button p-button-pnb float-right"></p-button> -->
+                        </div>
+                        <div class="p-field" *ngIf="showOtp">
+                            <p>OTP has been sent to your mobile number <b>{{mobile}}</b></p>
+                            <div class="p-inputgroup">
+                                <input type="text" [(ngModel)]="user.otp" name="otp" pInputText placeholder="Enter OTP">
+                                <button type="button" pButton pRipple label="Validate OTP" (click)="validateOtp()"></button>
+                            </div>
+                        </div>
+                        <div class="p-field">
+                            <a (click)="forgot=false;" class="cursor-pointer text-primary">Return To Login</a>
+                        </div>
+                        <div *ngIf="error" class="p-field text-danger">
+                            {{error}}
+                        </div>
+                        <!-- <div *ngIf="success" class="p-field m-0 p-0 text-success">
+                            {{success}}
+                        </div> -->
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div *ngIf="reports" class="text-center color-purple" style="font-size:16px; margin-top:25px;">
+            <!-- {{reportsDate}} -->
+            <marquee>
+                <p>{{reports.description}} {{reports.date}}</p>
+            </marquee>
+        </div>
+    </div>
+    <div class="p-col-3"></div>
+</div>
+
+<p-toast position="top-right"></p-toast>

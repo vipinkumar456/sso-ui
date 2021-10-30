@@ -1,0 +1,24 @@
+.loginBox {
+    padding: 1rem;
+    background: #fff;
+    border-radius: 4px;
+}
+
+.loginIcon {
+    min-height: 400px;
+}
+
+.disabled {
+    pointer-events: none;
+    cursor: default;
+    color: gray;
+}
+
+.captchaVal{line-height: 44px;
+    margin-right: 10px;
+    background: #333;
+    padding: 0 15px;
+    color: #fff;
+    cursor: none; width: 100px;
+    text-align: center;}
+.captchaInp{flex: none !important;}
